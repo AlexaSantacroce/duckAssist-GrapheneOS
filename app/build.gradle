@@ -6,13 +6,13 @@ plugins {
 System.setProperty("line.separator", "\n")
 
 android {
-    compileSdk 35
+    compileSdk 36
     namespace 'org.diekaiju.duckassist'
     android.buildFeatures.buildConfig true
     defaultConfig {
         applicationId "org.diekaiju.duckassist"
         minSdk 24
-        targetSdk 35
+        targetSdk 36
         versionCode 245
         versionName "0.4.0"
     }

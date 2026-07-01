@@ -1,78 +1,29 @@
-# duckAssist
+# duckAssist-GrapheneOS
 
-*This project is a fork of [gptAssist](https://github.com/woheller69/gptAssist).*
+**Fork of [duckAssist](https://github.com/diekaiju/duckAssist) hardened for GrapheneOS/Vanadium WebView.**
 
-**duckAssist** is a lightweight, privacy-focused Android WebView wrapper designed specifically for [Duck.ai](https://duck.ai/) (DuckDuckGo's private AI chat service). It bridges the gap between web and native by providing advanced integration features while maintaining the core privacy principles of DuckDuckGo.
+A lightweight, privacy-focused Android WebView wrapper for [Duck.ai](https://duck.ai/) (DuckDuckGo's private AI chat service).
 
-Duck.ai is entirely private and secure. It requires no login, allowing you to interact with multiple AI models (GPT-4o, Claude 3, Llama 3, etc.) without compromising your personal identity.
+## Changes from upstream
 
-## Downloads
+| Change | Rationale |
+|--------|-----------|
+| `setAllowFileAccess(false)` | Prevents `file://` URLs from bypassing Vanadium's strict site isolation |
+| `setAllowContentAccess(false)` | Removes unnecessary `content://` URI attack surface |
+| `setAcceptThirdPartyCookies(false)` | Restores Vanadium's default third-party cookie blocking |
+| `minSdk 21 → 24` | Vanadium requires API 24+; ensures hardened WebView is always used |
+| Removed remote Google Fonts from settings page | Eliminates external network request from a WebView with JS bridge to preferences |
 
-You can download **duckAssist** from:
-- [F-Droid](https://f-droid.org/packages/org.diekaiju.duckassist/)
-- [GitHub Releases](https://github.com/diekaiju/duckAssist/releases)
+## Upstream sync
 
-## Key Features
-
-- 🎯 **Focused Interface**: A clean, distraction-free environment tailored for AI chat, complete with a native progress bar for page loading feedback.
-- 🎙️ **Digital Assistant Integration**: Set **duckAssist** as your device's default digital assistant app. Access your AI companion instantly via your system's assistant shortcut (long-press home, swipe from corner, etc.).
-- ⚡ **Auto-Voice Activation**: When launched via the assistant shortcut, the app automatically triggers the **"New Voice Chat"** feature, getting you into a conversation immediately.
-- 🚀 **"Ask duck.ai" Integration**: Select text in any application on your device and choose "Ask duck.ai" from the context menu. The app will automatically launch in a dedicated window and load your query directly into the chat.
-- 🌐 **Smart Link Handling**: Navigation is optimized for the AI experience. All external links clicked within the app are automatically redirected to your system's default web browser, keeping your chat session secure and focused.
-- 🛡️ **Enhanced Privacy**:
-    - **Session Persistence**: User data and cookies are preserved so you don't lose your settings.
-    - **Automated Cache Management**: The application cache is purged whenever you leave or close the app to protect your privacy and save device storage.
-- 📁 **Native File Support**: Seamlessly upload documents for AI analysis and download attachments directly to your device's Downloads folder.
-- 🎨 **Custom Identity**: Features a premium new duck-themed visual identity and icon.
-- ⚙️ **HTML Settings & Custom Prompts**: Configure bottom drawer panel behavior, assistant voice options, and default prompt suffixes for text ("Ask duck.ai") and document sharing separately via a custom-styled HTML settings page.
-- 🚨 **High-Visibility Banner Alert**: Integrated a custom, animated red banner overlay instructing you how to attach shared files instead of low-visibility system toasts.
-
-## Usage
-
-### Ask duck.ai
-1. Highlight any text in your browser, email, or messaging app.
-2. Tap the three dots (overflow menu) and select **Ask duck.ai**.
-3. The app will open in a separate window and load your query directly into the chat prompt.
-
-### Digital Assistant
-1. Open your Android **Settings**.
-2. Go to **Apps** > **Default apps** > **Digital assistant app**.
-3. Select **duckAssist**.
-4. Use your device's assistant shortcut (long-press home button, etc.) to instantly launch a **Voice Chat** session.
-
-### External Navigation
-Simply click on any link or citation provided by the AI. The app will instantly launch your preferred mobile browser to view the content, leaving your AI conversation perfectly preserved in duckAssist.
-
-## screenshots
-
-<p align="center">
-  <img src="screenshot/image (1).jpg" width="30%" />
-  <img src="screenshot/image (2).jpg" width="30%" />
-  <img src="screenshot/image (3).jpg" width="30%" />
-</p>
-<p align="center">
-  <img src="screenshot/image (4).jpg" width="30%" />
-  <img src="screenshot/image (5).jpg" width="30%" />
-</p>
+```bash
+git checkout main
+git pull upstream main
+git checkout hardened
+git rebase main
+git push origin hardened --force
+```
 
 ## License
 
-This application is licensed under the GPLv3.
-
-The app uses:
-- Parts from GMaps WV (https://gitlab.com/divested-mobile/maps) which is licensed under the GPLv3.
-
-## Contributing
-
-If you encounter any issues or have suggestions for improvements, please open an issue in the repository. Pull requests are always welcome.
-
-## Donate
-
-If you like duckAssist, you're welcome to send a donation. duckAssist is vibe coded in my free time bringing you the best user experience.
-
-## Buy me a coffee
-
-If you want to support the developer:
-
- [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/diekaiju)
-
+GPLv3
