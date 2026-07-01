@@ -251,8 +251,8 @@ public class MainActivity extends Activity {
         webSettings.setSupportZoom(false);
         webSettings.setBuiltInZoomControls(false);
         webSettings.setDisplayZoomControls(false);
-        webSettings.setAllowFileAccess(true);
-        webSettings.setAllowContentAccess(true);
+        webSettings.setAllowFileAccess(false);
+        webSettings.setAllowContentAccess(false);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             webSettings.setMediaPlaybackRequiresUserGesture(false);
         }
@@ -268,7 +268,7 @@ public class MainActivity extends Activity {
 
         CookieManager cookieManager = CookieManager.getInstance();
         cookieManager.setAcceptCookie(true);
-        cookieManager.setAcceptThirdPartyCookies(chatWebView, true);
+        cookieManager.setAcceptThirdPartyCookies(chatWebView, false);
 
         chatWebView.setWebViewClient(new MyWebViewClient());
         chatWebView.setWebChromeClient(new MyWebChromeClient());
