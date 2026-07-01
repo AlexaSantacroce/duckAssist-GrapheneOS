@@ -7,10 +7,10 @@ System.setProperty("line.separator", "\n")
 
 android {
     compileSdk 36
-    namespace 'org.diekaiju.duckassist'
+    namespace 'org.cvu007.duckassist'
     android.buildFeatures.buildConfig true
     defaultConfig {
-        applicationId "org.diekaiju.duckassist"
+        applicationId "org.cvu007.duckassist"
         minSdk 24
         targetSdk 36
         versionCode 245

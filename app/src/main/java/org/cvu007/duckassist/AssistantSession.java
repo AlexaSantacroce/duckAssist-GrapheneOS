@@ -1,4 +1,4 @@
-package org.diekaiju.duckassist;
+package org.cvu007.duckassist;
 
 import android.content.Context;
 import android.content.Intent;

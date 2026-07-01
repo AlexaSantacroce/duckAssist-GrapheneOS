@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.DeviceDefault">
         <activity
-            android:name="org.diekaiju.duckassist.MainActivity"
+            android:name="org.cvu007.duckassist.MainActivity"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
             android:launchMode="singleTask"
             android:exported="true">
@@ -37,7 +37,7 @@
         </activity>
 
         <activity
-            android:name="org.diekaiju.duckassist.AskActivity"
+            android:name="org.cvu007.duckassist.AskActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:exported="true">
             <intent-filter>
@@ -59,11 +59,11 @@
         </activity>
 
         <activity
-            android:name="org.diekaiju.duckassist.ChatActivity"
+            android:name="org.cvu007.duckassist.ChatActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
             android:launchMode="singleTask"
-            android:taskAffinity="org.diekaiju.duckassist.ask"
+            android:taskAffinity="org.cvu007.duckassist.ask"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.ASSIST" />
