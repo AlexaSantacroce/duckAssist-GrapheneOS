@@ -24,6 +24,8 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebStorage;
 import android.webkit.WebView;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -39,7 +41,10 @@ import android.graphics.pdf.PdfRenderer;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.ParcelFileDescriptor;
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.Collections;
+import java.util.Set;
 import android.content.pm.PackageManager;
 import android.webkit.PermissionRequest;
 
@@ -815,6 +820,8 @@ public class MainActivity extends Activity {
     }
 
     private class MyWebViewClient extends WebViewClient {
+        private final Set<String> blocked = Set.of("improving.duckduckgo.com");
+
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             Uri uri = Uri.parse(url);
@@ -829,6 +836,23 @@ public class MainActivity extends Activity {
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
             return true;
+        }
+
+        @Override
+        public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
+            Uri uri = request.getUrl();
+            String host = uri.getHost();
+            if (host != null && blocked.contains(host)) {
+                return new WebResourceResponse(
+                        "text/plain",
+                        "UTF-8",
+                        204,
+                        "No Content",
+                        Collections.emptyMap(),
+                        new ByteArrayInputStream(new byte[0])
+                );
+            }
+            return super.shouldInterceptRequest(view, request);
         }
 
         @Override
