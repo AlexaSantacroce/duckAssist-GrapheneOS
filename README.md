@@ -27,6 +27,10 @@ git rebase main
 git push origin hardened --force
 ```
 
+## Credits
+
+- [woheller69/FreeDroidWarn](https://github.com/woheller69/FreeDroidWarn) — Shows a deprecation warning about Google's developer verification requirements
+
 ## License
 
 GPLv3
