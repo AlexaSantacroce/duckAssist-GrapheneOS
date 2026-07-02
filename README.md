@@ -2,6 +2,8 @@
 
 **Fork of [duckAssist](https://github.com/diekaiju/duckAssist) hardened for GrapheneOS/Vanadium WebView.**
 
+## I don't think voice activation and digital assitant features are working. I made tweaks that prioritize security and Vanadium Webview compatibility.
+
 A lightweight, privacy-focused Android WebView wrapper for [Duck.ai](https://duck.ai/) (DuckDuckGo's private AI chat service).
 
 ## Changes from upstream
