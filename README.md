@@ -15,7 +15,7 @@ A lightweight, privacy-focused Android WebView wrapper for [Duck.ai](https://duc
 | `setAcceptThirdPartyCookies(false)` | Restores Vanadium's default third-party cookie blocking |
 | `minSdk 21 → 24` | Vanadium requires API 24+; ensures hardened WebView is always used |
 | Removed remote Google Fonts from settings page | Eliminates external network request from a WebView with JS bridge to preferences |
-| Block `improving.duckduckgo.com` via `shouldInterceptRequest` | Prevents DuckDuckGo telemetry from leaving the device; returns 204 No Content |
+| Block `improving.duckduckgo.com` via `shouldInterceptRequest` | Prevents DuckDuckGo telemetry from leaving the device |
 
 ## Upstream sync
 
